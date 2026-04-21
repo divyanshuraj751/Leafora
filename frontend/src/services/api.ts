@@ -10,7 +10,7 @@
 import type { DiseaseResult } from "@/components/result/DiseaseCard";
 import type { ScanHistoryItem } from "@/components/common/HistoryList";
 
-const API_BASE = (import.meta.env.VITE_API_URL as string | undefined) ?? "";
+const API_BASE = import.meta.env.PROD ? "/_/backend" : ((import.meta.env.VITE_API_URL as string | undefined) ?? "");
 
 async function safeFetch<T>(path: string, init?: RequestInit, fallback?: T): Promise<T> {
   if (!API_BASE) return fallback as T;

@@ -3,7 +3,7 @@
  * { prompt, history } and returns { reply: string }. Falls back to a small
  * canned response set so the UI never breaks if Gemini is down.
  */
-const API_BASE = (import.meta.env.VITE_API_URL as string | undefined) ?? "";
+const API_BASE = import.meta.env.PROD ? "/_/backend" : ((import.meta.env.VITE_API_URL as string | undefined) ?? "");
 
 export interface ChatTurn {
   role: "user" | "assistant";
